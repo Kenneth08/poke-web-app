@@ -1,6 +1,6 @@
 import { Box, Grid, Button} from "@mui/material";
-import { typeColors } from '../materialStyles';
 import { useNavigate } from "react-router-dom";
+import { typeColors } from '../materialStyles';
 
 export default function ResponsiveTypeMenu(props) {
     const {types} = props;
@@ -44,7 +44,7 @@ export default function ResponsiveTypeMenu(props) {
                                         py: 1.5,
                                         height: '100%'
                                     }}
-                                    onClick={()=> navigate(`/type`, { state: { name: type.name, url: type.url } })}
+                                    onClick={()=> navigate(`/type`, { state: { type: type.name, typeId: type.url.match(/\/(\d+)\/?$/)[1]} })}
                                 >
                                     {type.name}
                                 </Button>

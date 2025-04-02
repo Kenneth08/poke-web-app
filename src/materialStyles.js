@@ -17,6 +17,22 @@ const typeColors = {
     dark: '#705848',
     steel: '#B8B8D0',
     fairy: '#EE99AC',
+    stellar:{ background: 'linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)',
+    width: '100%',
+    height: '100%'},
+    unknown: "whitegray"
+  };
+  const modal = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: '#2E3532',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    // backgroundColor:'#2E3532'
   };
 
-  export {typeColors};
+  export {typeColors,modal};
