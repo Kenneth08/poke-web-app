@@ -5,7 +5,7 @@ import Type from "./pages/pokeType";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/poke-web-app/">
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/type" element={<Type/>}/>
