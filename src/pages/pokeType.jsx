@@ -111,13 +111,24 @@ export default function PokeType() {
           />
         </Box>
       </Box>
-      <Grid container spacing={2} sx={{ px: 2 }}>
+      <Grid container  sx={{
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 2,
+    justifyContent:'center'
+  }}>
         {paginatedData.map((element) => {
           const pokemonId = element.pokemon.url.match(/\/(\d+)\/?$/)[1];
           return (
             <Grid
               key={element.pokemon.name}
-              size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+              sx={{
+                flex: '1 0 25%',
+                minWidth: '200px', 
+                maxWidth: '300px', 
+                display: 'flex',
+                justifyContent: 'center',
+              }}
             >
               <Card
                 action={handleOpen}

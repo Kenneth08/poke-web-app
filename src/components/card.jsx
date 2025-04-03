@@ -14,6 +14,8 @@ export default function CustomCard(props) {
         <Card sx={{
             position: 'relative',
             height: '90%',
+            width: '100%',
+            maxWidth: '250px',
             background: 'linear-gradient(to bottom, #8B2635 50%, #E0E2DB 50%)',
             color: 'white',
             transition: 'all 0.3s ease',
@@ -41,7 +43,6 @@ export default function CustomCard(props) {
                 <Typography variant="h6" sx={{ 
                     fontFamily: 'monospace', 
                     textTransform: 'capitalize',
-                    // color: ' #2E3532',
                     textShadow: '2px 2px 0 rgb(102, 109, 106)',
                     fontSize: '1.5rem',
                     letterSpacing: '2px'
