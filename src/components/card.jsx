@@ -3,7 +3,8 @@ import {
     CardContent,
     CardMedia,
     Typography,
-    CardActionArea
+    CardActionArea,
+    Box
 } from '@mui/material';
 
 export default function CustomCard(props) {
@@ -37,18 +38,29 @@ export default function CustomCard(props) {
                 pointerEvents: 'none', // Prevent interaction issues
                 '.MuiCard-root:hover &': { opacity: 0 }
             }}>
-                <Typography variant="h6" sx={{    fontFamily: 'monospace', textTransform: 'capitalize' }}>
+                <Typography variant="h6" sx={{ 
+                    fontFamily: 'monospace', 
+                    textTransform: 'capitalize',
+                    // color: ' #2E3532',
+                    textShadow: '2px 2px 0 rgb(102, 109, 106)',
+                    fontSize: '1.5rem',
+                    letterSpacing: '2px'
+                     }}>
                     {name}
                 </Typography>
+                <Box  sx={{
+                    justifyItems:'end'}}>
                 <Typography variant="subtitle1" sx={{
+                    mt:9,
                     fontFamily: 'monospace',
-                    color: 'white',
-                    textShadow: '2px 2px 0 #2E3532',
-                    fontSize: '1rem',
+                    color: ' #2E3532',
+                    textShadow: '1px 1px 0 rgb(102, 109, 106)',
+                    fontSize: '1.5rem',
                     letterSpacing: '2px'
                 }}>
                     #{pokemonId.toString().padStart(3, '0')}
                 </Typography>
+                </Box>
             </CardContent>
 
             <CardActionArea
@@ -65,12 +77,27 @@ export default function CustomCard(props) {
                     }
                 }}>
                 <CardMedia
-                    component="img"
-                    height="140"
-                    image={image}
-                    alt={name}
-                    sx={{ objectFit: 'contain' }}
-                />
+                      component="div"
+                      sx={{
+                        position: 'relative',
+                        width: '100%',
+                        height: '150px',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <img
+                        src={image}
+                        alt={name}
+                        style={{
+                          position: 'absolute',
+                          objectFit: 'contain',
+                          width: '100%',
+                          height: '100%',
+                        }}
+                      />
+                </CardMedia>
                 <CardContent>
                     <Typography
                         gutterBottom

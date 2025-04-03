@@ -30,6 +30,7 @@ export default function Home() {
             mx: 'auto'
         }}>
             <Typography variant="h4" sx={{ 
+                mt:8,
                 mb: 3,
                 color: '#D2D4C8',
                 textAlign: 'center'
