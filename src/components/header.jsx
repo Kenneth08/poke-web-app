@@ -1,22 +1,25 @@
-import { Typography, AppBar} from '@mui/material';
+import { useNavigate } from "react-router-dom";
+import { Typography, AppBar } from '@mui/material';
 
 export default function Header(props) {
     const { bgColor, textColor } = props;
+    const navigate = useNavigate();
     return (
-        <AppBar 
+        <AppBar
             position="fixed"
-            sx={{ 
+            sx={{
                 backgroundColor: bgColor,
                 zIndex: (theme) => theme.zIndex.drawer + 1,
                 boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: 80, // Fixed height for consistency
-                px: 2 // Horizontal padding
+                height: 80,
+                px: 2
             }}
         >
             <Typography
+                onClick={() => navigate('/')}
                 variant="h1"
                 sx={{
                     fontFamily: 'monospace',

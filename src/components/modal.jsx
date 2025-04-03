@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import {
   Modal,
   Backdrop,
@@ -12,9 +13,19 @@ import CircularLoading from "./circularProgress";
 
 export default function CustomModal(props) {
   const { open, close, data, loading } = props;
+  const [newDisplay, setNewDisplay] = useState(true);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  if (loading) return(<CircularLoading size={60} />)
+
+  useEffect(() => {
+    if (open)
+      setTimeout(() => {
+        setNewDisplay(false);
+      }, 500);
+    if (!open) { setNewDisplay(true) };
+
+  }, [open]);
+
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -30,22 +41,35 @@ export default function CustomModal(props) {
         },
       }}
     >
-        <Fade in={open}>
+      <Fade in={open}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: isSmallScreen ? 'column' : 'row',
+          backgroundColor: '#2E3532',
+          color: '#E0E2DB',
+          borderRadius: 3,
+          width: isSmallScreen ? '90%' : '600px',
+          minHeight: '250px',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          boxShadow: '0px 5px 15px rgba(0,0,0,0.3)',
+          overflow: 'hidden'
+        }}>{loading || newDisplay ? (
           <Box sx={{
-            display: 'flex',
-            flexDirection: isSmallScreen ? 'column' : 'row',
-            backgroundColor: '#2E3532',
-            color: '#E0E2DB',
-            borderRadius: 3,
-            width: isSmallScreen ? '90%' : '600px',
-            minHeight: '250px',
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            boxShadow: '0px 5px 15px rgba(0,0,0,0.3)',
-            overflow: 'hidden'
-          }}>
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            position: 'absolute', 
+            top: '50%', 
+            left: '50%', 
+            transform: 'translate(-50%, -50%)' }}>
+            <CircularLoading size={60} />
+          </Box>
+        ) : (
+
+          <>
             <Box sx={{
               flex: 1,
               backgroundColor: '#D2D4C8',
@@ -71,9 +95,9 @@ export default function CustomModal(props) {
               </Typography>
 
               <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${data.id}.png`}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${data.id}.png`}
                 alt={data.name}
-                style={{ width: '200px', height: '200px' }}
+                style={{ width: '300px', height: '300px' }}
               />
             </Box>
             <Box sx={{
@@ -97,9 +121,9 @@ export default function CustomModal(props) {
                 Abilities
               </Typography>
 
-              <Grid  
-                container 
-                spacing={1} 
+              <Grid
+                container
+                spacing={1}
                 direction={isSmallScreen ? "column" : "row"}
                 justifyContent="center"
                 alignItems="center">
@@ -125,9 +149,12 @@ export default function CustomModal(props) {
                 ))}
               </Grid>
             </Box>
+          </>
+        )}
 
-          </Box>
-        </Fade>
+
+        </Box>
+      </Fade>
     </Modal>
   );
 }

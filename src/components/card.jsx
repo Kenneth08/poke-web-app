@@ -44,7 +44,7 @@ export default function CustomCard(props) {
                     fontFamily: 'monospace', 
                     textTransform: 'capitalize',
                     textShadow: '2px 2px 0 rgb(102, 109, 106)',
-                    fontSize: '1.5rem',
+                    fontSize: name.length < 15 ?'1.5rem':'1rem',
                     letterSpacing: '2px'
                      }}>
                     {name}
@@ -94,8 +94,8 @@ export default function CustomCard(props) {
                         style={{
                           position: 'absolute',
                           objectFit: 'contain',
-                          width: '100%',
-                          height: '100%',
+                          width: '80%',
+                          height: '80%',
                         }}
                       />
                 </CardMedia>
