@@ -67,14 +67,17 @@ export default function PokeType() {
           display: "flex",
           justifyContent: "center",
           width: "100%",
-          my: 3,
+          flexDirection: { xs: "column", sm: "row" },
+          alignItems: "center",
+          gap: 2,
+          mt: 12,
+          mb: 4
         }}
       >
         <Typography
           variant="h6"
           sx={{
             fontFamily: "monospace",
-            mt: 12,
             mr: 2,
             px: 3,
             py: 2,
@@ -90,44 +93,46 @@ export default function PokeType() {
         >
           Type: {type}
         </Typography>
-        <Box sx={{ mt: 12, width: 300 }}>
-          <TextField
-            fullWidth
-            color="primary"
-            label={`Search ${type} pokémon...`}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            sx={{
-              maxWidth: 300,
-              fontFamily: "monospace",
-              borderRadius: "15px",
-              "& .MuiInputLabel-root": {
-                color: "white",
-              },
-              "& .MuiInputBase-input": {
-                color: "white",
-              },
-            }}
-          />
-        </Box>
+
+        <TextField
+          fullWidth
+          color="primary"
+          label={`Search ${type} pokémon...`}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          sx={{
+            maxWidth: 250,
+            fontFamily: "monospace",
+            borderRadius: "15px",
+            "& .MuiInputLabel-root": {
+              color: "white",
+            },
+            "& .MuiInputBase-input": {
+              color: "white",
+            },
+          }}
+        />
       </Box>
-      <Grid container  sx={{
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 2,
-    justifyContent:'center'
-  }}>
+      <Grid
+        container
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 2,
+          justifyContent: "center",
+        }}
+      >
         {paginatedData.map((element) => {
           const pokemonId = element.pokemon.url.match(/\/(\d+)\/?$/)[1];
           return (
             <Grid
               key={element.pokemon.name}
               sx={{
-                flex: '1 0 25%',
-                minWidth: '200px', 
-                maxWidth: '300px', 
-                display: 'flex',
-                justifyContent: 'center',
+                flex: "1 0 25%",
+                minWidth: "200px",
+                maxWidth: "300px",
+                display: "flex",
+                justifyContent: "center",
               }}
             >
               <Card
